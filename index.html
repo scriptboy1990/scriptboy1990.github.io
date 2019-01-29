@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/28/why-sigmod-can-be-regarded-as-probability/" itemprop="url">为什么逻辑回归是sigmod形式</a></h1>
+                <a class="post-title-link" href="/2019/01/28/why-sigmod-can-be-regarded-as-probability/" itemprop="url">为什么逻辑回归是sigmoid形式</a></h1>
         
 
         <div class="post-meta">
@@ -352,9 +352,9 @@
       
         
           
-            <p>最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmod形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。</p>
+            <p>最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。</p>
 <p>知识的深度可以挖掘很多层，我觉得这个问题可以从广义线性模型来展开。GLM假设预测值的分布属于指数分布，而二分类问题可以看作是伯努利分布，伯努利分布又属于指数分布的一种。</p>
-<p>伯努利分布：<br>$$<br>p(y,\eta)=b(y)exp(\eta^{T}T(y)-a(\eta))<br>$$<br>伯努利分布：<br>$$<br>p(y,\eta)=\pi^{y}(1-\pi)^{1-y}<br>$$<br>π表示正样本的概率，对上述分布做一下转换：<br>$$<br>p(y:\pi)=exp(y*log(\frac{\pi}{1-\pi})+log(1-\pi))<br>$$<br>因为上面提到伯努利属于指数分布一种，所以对用上式和GLM的一一对应，可以得到：<br>$$<br>log(\frac{\pi}{1-\pi})=\eta^{T}=x^{T}\theta<br>$$<br>所以，可以得到：<br>$$<br>\pi=\frac{exp(x^{T}\theta)}{1+exp(x^{T}\theta)}<br>$$<br>而π表示正样本的概率，所以sigmod可以在一定的假设条件下表示成概率。</p>
+<p>伯努利分布：<br>$$<br>p(y,\eta)=b(y)exp(\eta^{T}T(y)-a(\eta))<br>$$<br>伯努利分布：<br>$$<br>p(y,\eta)=\pi^{y}(1-\pi)^{1-y}<br>$$<br>π表示正样本的概率，对上述分布做一下转换：<br>$$<br>p(y:\pi)=exp(y*log(\frac{\pi}{1-\pi})+log(1-\pi))<br>$$<br>因为上面提到伯努利属于指数分布一种，所以对用上式和GLM的一一对应，可以得到：<br>$$<br>log(\frac{\pi}{1-\pi})=\eta^{T}=x^{T}\theta<br>$$<br>所以，可以得到：<br>$$<br>\pi=\frac{exp(x^{T}\theta)}{1+exp(x^{T}\theta)}<br>$$<br>而π表示正样本的概率，所以sigmoid可以在一定的假设条件下表示成概率。</p>
 <p>总结：逻辑回归模型之所以是sigmoid的形式，源于我们假设y服从伯努利分布，伯努利分布又属于指数分布族，经过推导，将伯努利分布变成指数分布族的形式后。我们发现伯努利分布的唯一参数Φ与指数分布族中的参数η具有sigmoid函数关系，于是我们转而求η与x的关系，此时，我们又假设η与x具有线性关系。<br>至此，在两个假设条件下，找到了我们要用的模型的样子，也就是逻辑回归。</p>
 
           
