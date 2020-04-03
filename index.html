@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/19/thinking-about-recommendation-system/" itemprop="url">对互联网推荐系统/推荐算法的思考</a></h1>
+                <a class="post-title-link" href="/2020/01/19/thinking-about-recommendation-system/" itemprop="url">深度强化学习DRL在推荐系统应用的思考</a></h1>
         
 
         <div class="post-meta">
@@ -340,7 +340,7 @@
 
           
           
-             <span id="/2020/01/19/thinking-about-recommendation-system/" class="leancloud_visitors" data-flag-title="对互联网推荐系统/推荐算法的思考">
+             <span id="/2020/01/19/thinking-about-recommendation-system/" class="leancloud_visitors" data-flag-title="深度强化学习DRL在推荐系统应用的思考">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  11
+                  567
                 </span>
               
 
@@ -404,7 +404,9 @@
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>编辑中，马上上传。</p>
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近一段时间，一直忙着调研强化学习，特别是深度学强化学习如何和推荐系统相结合。在看个半个月强化学习相关书籍和资料后，开始找寻RL For RecSys相关的paper，刚开始一搜，觉得还挺多嘛，入手应该不难。像Google、Microsoft、阿里、京东均有发表，特别是京东，好几篇，当时就觉得挺激动，不过细阅后，发现实际在生产线上落地过的，应该只有前三者，而且也是ABTest状态，京东是线下用模拟器跑的，感觉说服力不够。所以，实际上，能供参考的有效资料并不是特别丰富，很多细节估计得靠上线后去把握，去琢磨。</p>
+<h2 id="背景描述"><a href="#背景描述" class="headerlink" title="背景描述"></a>背景描述</h2><p>目前我所参与的推荐系统和算法的开发，是作用于一款Feed流形式的资讯类app，目前线上的模型有LR、GBDT+LR、各种DNN等，做各种召回、排序的同事也挺多，在重排这快，目前还是以策略和人工规则为主，各个公司应该也都差不多，比如类目打散、类目限制、强插、强出等等，比较复杂，比较臃肿，但是重排也是特别重要的一块，在这里，物品多样性的控制显的尤为重要。推荐系统从抽象的来说，就是准确率和多样性的一个综合，在不同的上下文环境，不同的用户，这个比例的控制对用户体验，对指标，有着巨大的影响。所以，很自然的想到，如果想在重排这块做点工作，强化学习是个值得深入的方向。虽然也看到有阿里论文介绍针对List-Wise优化的监督学习方法，不过在公司现有的业务状况下，首先还是考虑了用强化学习去控制重排中的各种参数，比如排序多模型融合时候的融合参数，类目数量的个性化控制，是否要插入视频，插入几个视频等等，这些场景应用和公司本身业务联系更紧密。</p>
+<h2 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2><p>待补充</p>
 
           
         
@@ -559,7 +561,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  528
+                  516
                 </span>
               
 
@@ -598,7 +600,7 @@
       
         
           
-            <p>最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。</p>
+            <p>最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？比较少人去深入了解这个。</p>
 <p>知识的深度可以挖掘很多层，我觉得这个问题可以从广义线性模型来展开。GLM假设预测值的分布属于指数分布，而二分类问题可以看作是伯努利分布，伯努利分布又属于指数分布的一种。</p>
 <p>伯努利分布：<br>$$<br>p(y,\eta)=b(y)exp(\eta^{T}T(y)-a(\eta))<br>$$<br>伯努利分布：<br>$$<br>p(y,\eta)=\pi^{y}(1-\pi)^{1-y}<br>$$<br>π表示正样本的概率，对上述分布做一下转换：<br>$$<br>p(y:\pi)=exp(y*log(\frac{\pi}{1-\pi})+log(1-\pi))<br>$$<br>因为上面提到伯努利属于指数分布一种，所以对用上式和GLM的一一对应，可以得到：<br>$$<br>log(\frac{\pi}{1-\pi})=\eta^{T}=x^{T}\theta<br>$$<br>所以，可以得到：<br>$$<br>\pi=\frac{exp(x^{T}\theta)}{1+exp(x^{T}\theta)}<br>$$<br>而π表示正样本的概率，所以sigmoid可以在一定的假设条件下表示成概率。</p>
 <p>总结：逻辑回归模型之所以是sigmoid的形式，源于我们假设y服从伯努利分布，伯努利分布又属于指数分布族，经过推导，将伯努利分布变成指数分布族的形式后。我们发现伯努利分布的唯一参数Φ与指数分布族中的参数η具有sigmoid函数关系，于是我们转而求η与x的关系，此时，我们又假设η与x具有线性关系。<br>至此，在两个假设条件下，找到了我们要用的模型的样子，也就是逻辑回归。</p>

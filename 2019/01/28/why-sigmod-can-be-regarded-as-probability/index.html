@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。 知识的深度可以挖掘很多">
+<meta name="description" content="最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？比较少人去深入了解这个。 知识的深度可以挖掘很多层，我觉得这个问题可以从广义">
 <meta name="keywords" content="逻辑回归,概率">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为什么逻辑回归是sigmoid形式">
 <meta property="og:url" content="http://scriptboy.me/2019/01/28/why-sigmod-can-be-regarded-as-probability/index.html">
 <meta property="og:site_name" content="ScriptBoy&#39;s Blog">
-<meta property="og:description" content="最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。 知识的深度可以挖掘很多">
+<meta property="og:description" content="最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？比较少人去深入了解这个。 知识的深度可以挖掘很多层，我觉得这个问题可以从广义">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-29T01:24:22.450Z">
+<meta property="og:updated_time" content="2020-04-03T13:57:57.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么逻辑回归是sigmoid形式">
-<meta name="twitter:description" content="最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。 知识的深度可以挖掘很多">
+<meta name="twitter:description" content="最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？比较少人去深入了解这个。 知识的深度可以挖掘很多层，我觉得这个问题可以从广义">
 
 
 
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  528
+                  516
                 </span>
               
 
@@ -404,7 +404,7 @@
       
 
       
-        <p>最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？没人说的出来，我之前也困惑过这个，所以特地了解了下。</p>
+        <p>最近在公司面试应聘者机器学习基础的过程中，比较喜欢问面试者一个问题，就是逻辑回归是sigmoid形式，sigmoid的结果是真实的概率吗，为什么可以把它当作一个probability来处理。印象中是没有一个人可以比较深入回答的，绝大部分的回答都是sigmoid函数可以映射在0、1之间，但是0、1之间的数值和概率有啥关系呢？比较少人去深入了解这个。</p>
 <p>知识的深度可以挖掘很多层，我觉得这个问题可以从广义线性模型来展开。GLM假设预测值的分布属于指数分布，而二分类问题可以看作是伯努利分布，伯努利分布又属于指数分布的一种。</p>
 <p>伯努利分布：<br>$$<br>p(y,\eta)=b(y)exp(\eta^{T}T(y)-a(\eta))<br>$$<br>伯努利分布：<br>$$<br>p(y,\eta)=\pi^{y}(1-\pi)^{1-y}<br>$$<br>π表示正样本的概率，对上述分布做一下转换：<br>$$<br>p(y:\pi)=exp(y*log(\frac{\pi}{1-\pi})+log(1-\pi))<br>$$<br>因为上面提到伯努利属于指数分布一种，所以对用上式和GLM的一一对应，可以得到：<br>$$<br>log(\frac{\pi}{1-\pi})=\eta^{T}=x^{T}\theta<br>$$<br>所以，可以得到：<br>$$<br>\pi=\frac{exp(x^{T}\theta)}{1+exp(x^{T}\theta)}<br>$$<br>而π表示正样本的概率，所以sigmoid可以在一定的假设条件下表示成概率。</p>
 <p>总结：逻辑回归模型之所以是sigmoid的形式，源于我们假设y服从伯努利分布，伯努利分布又属于指数分布族，经过推导，将伯努利分布变成指数分布族的形式后。我们发现伯努利分布的唯一参数Φ与指数分布族中的参数η具有sigmoid函数关系，于是我们转而求η与x的关系，此时，我们又假设η与x具有线性关系。<br>至此，在两个假设条件下，找到了我们要用的模型的样子，也就是逻辑回归。</p>
@@ -450,8 +450,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/19/thinking-about-recommendation-system/" rel="prev" title="对互联网推荐系统/推荐算法的思考">
-                对互联网推荐系统/推荐算法的思考 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/19/thinking-about-recommendation-system/" rel="prev" title="深度强化学习DRL在推荐系统应用的思考">
+                深度强化学习DRL在推荐系统应用的思考 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
